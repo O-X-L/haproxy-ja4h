@@ -38,21 +38,20 @@ About JA3:
 
 If you have:
 
-* Found an issue/bug - please [report it](https://github.com/O-X-L/haproxy-ja4/issues/new)
-* Have an idea on how to improve it - [feel free to start a discussion](https://github.com/O-X-L/haproxy-ja4/discussions/new/choose)
+* Found an issue/bug - please [report it](https://github.com/O-X-L/haproxy-ja4h/issues/new)
+* Have an idea on how to improve it - [feel free to start a discussion](https://github.com/O-X-L/haproxy-ja4h/discussions/new/choose)
 * PRs are welcome
 
 ### Issues
 
-* The TCP/QUIC switch is currently hardcoded to TCP
-* Have not yet been able to implement the signature algorithm fetching method ([src1](https://github.com/FoxIO-LLC/ja4/blob/main/python/common.py#L147), [src2](https://github.com/FoxIO-LLC/ja4/blob/main/python/ja4.py#L215))
+* Have not yet found an option to access the request object `req`.
 
 ### Testing
 
 * Create snakeoil certificate:
 
   ```bash
-  openssl req -x509 -newkey rsa:4096 -sha256 -nodes -subj "/CN=HAProxy JA4 Test" -addext "subjectAltName = DNS:localhost,IP:127.0.0.1" -keyout /tmp/haproxy.key.pem -out /tmp/haproxy.crt.pem -days 30
+  openssl req -x509 -newkey rsa:4096 -sha256 -nodes -subj "/CN=HAProxy JA4H Test" -addext "subjectAltName = DNS:localhost,IP:127.0.0.1" -keyout /tmp/haproxy.key.pem -out /tmp/haproxy.crt.pem -days 30
   cat /tmp/haproxy.crt.pem /tmp/haproxy.key.pem > /tmp/haproxy.pem
   ```
 
