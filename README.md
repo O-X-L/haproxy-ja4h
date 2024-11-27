@@ -23,7 +23,7 @@ About JA3:
 
 ## Usage
 
-* Add the LUA script `ja4h.lua` and [sha2.lua](https://github.com/Egor-Skriptunoff/pure_lua_SHA) ([download](https://raw.githubusercontent.com/Egor-Skriptunoff/pure_lua_SHA/master/sha2.lua)) to your system
+* Add the LUA script `ja4h.lua` to your system
 
 ## Config
 
