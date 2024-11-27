@@ -23,7 +23,7 @@ About JA3:
 
 ## Usage
 
-* Add the LUA script `ja4h.lua` to your system
+* Add the LUA script `ja4h.lua` to your system. Available HTTP fetches are: [HAProxy HTTP fetches](https://github.com/haproxy/haproxy/blob/v3.1.0/src/http_fetch.c#L2256)
 
 ## Config
 
