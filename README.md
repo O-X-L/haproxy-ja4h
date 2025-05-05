@@ -78,7 +78,7 @@ raw fingerprint: ge_20_n_c_16_enus_accept,accept-encoding,accept-language,cache-
 #### Docker
 
 If you prefer to use Docker, the manual steps can be skipped.
-Run the docker container from the project root and access https://localhost:6969
+Run the docker container from the project root and access http://localhost:6969
 
 ```bash
 docker compose -f test/docker-compose.yaml up --build --watch
@@ -91,6 +91,6 @@ docker compose -f test/docker-compose.yaml up --build --watch
 **WARNING**: You need to run a version of HAProxy >=2.9 or `master`
 
 * Run: `bash test/run.sh`
-* Access the test website: https://localhost:6969/
+* Access the test website: http://localhost:6969/
 
 Exit with `CTRL+C`
