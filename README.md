@@ -4,6 +4,8 @@
 
 You need to run HAProxy 2.9 or higher to use this plugin!
 
+If the needed features are not yet available in your version - it will fail with the error `attempt to call a nil value (method 'req_cook_names')`
+
 ----
 
 ## Intro
