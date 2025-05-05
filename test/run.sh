@@ -28,4 +28,4 @@ then
 fi
 
 echo '### RUNNING ###'
-haproxy -W -f test/haproxy_example.cfg
+/usr/sbin/haproxy -W -f test/haproxy_example.cfg

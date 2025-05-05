@@ -2,6 +2,8 @@
 
 **WARNING: This plugin is still in early development! DO NOT USE IN PRODUCTION!**
 
+You need to run HAProxy 2.9 or higher to use this plugin!
+
 ----
 
 ## Intro
@@ -67,10 +69,10 @@ Available HTTP-fetches are: [HAProxy HTTP fetches](https://github.com/haproxy/ha
 Example:
 ```
 FINGERPRINT
-xxx
+ge20nc16enus_38f13b2c1334_1b82fc6e2b78_60837532b357
 
 DEBUG
-raw fingerprint: xxx 
+raw fingerprint: ge_20_n_c_16_enus_accept,accept-encoding,accept-language,cache-control,cookie,host,priority,sec-ch-ua,sec-ch-ua-mobile,sec-ch-ua-platform,sec-fetch-dest,sec-fetch-mode,sec-fetch-site,sec-fetch-user,upgrade-insecure-requests,user-agent_abc,def_abc=test,def=me
 ```
 
 #### Docker
@@ -85,6 +87,8 @@ docker compose -f test/docker-compose.yaml up --build --watch
 `--watch` will automatically rebuild the container on changes
 
 #### Local
+
+**WARNING**: You need to run a version of HAProxy >=2.9 or `master`
 
 * Run: `bash test/run.sh`
 * Access the test website: https://localhost:6969/
