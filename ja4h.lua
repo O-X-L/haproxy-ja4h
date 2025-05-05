@@ -10,8 +10,6 @@
 --   log: http-request capture var(txn.fingerprint_ja4h) len 51
 --   acl: var(txn.fingerprint_ja4h) -m str ge11cn21enus_9022c49255fb_ac95b44401d9_8df6a44f726c
 
-local sha = require('sha2')
-
 function split_string(str, delimiter)
     local result = {}
     local from  = 1

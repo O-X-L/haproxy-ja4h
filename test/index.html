@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HAProxy Static Page</title>
+    </head>
+    <body>
+        <h2>FINGERPRINT</h2>
+        <p>
+            %[var(txn.fingerprint_ja4h)]
+        </p>
+        <hr>
+        <h2>DEBUG</h2>
+        <p>
+            raw fingerprint: %[var(txn.fingerprint_ja4h_raw)]
+        </p>
+    </body>
+</html>

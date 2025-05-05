@@ -1,0 +1,21 @@
+---
+
+services:
+  haproxy:
+    build:
+      context: ../
+      dockerfile: test/Dockerfile
+      args:
+        HAPROXY_BRANCH: "master"
+    develop:
+      watch:
+      - path: ../
+        ignore:
+        - README.md
+        - LICENSE.txt
+        action: rebuild
+    volumes:
+      - $PWD/ja4.lua:/tmp/haproxy_ja4h.lua
+      - $PWD/test/haproxy_example.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    ports:
+      - 127.0.0.1:6969:6969

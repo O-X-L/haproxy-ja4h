@@ -2,35 +2,37 @@
 
 **WARNING: This plugin is still in early development! DO NOT USE IN PRODUCTION!**
 
+----
+
 ## Intro
 
 About JA4:
 
-* [HAProxy Lua Plugin (JA4)](https://github.com/O-X-L/haproxy-ja4)
 * [JA4+ Suite](https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/README.md)
 * [FoxIO Repository](https://github.com/FoxIO-LLC/ja4)
 * [Cloudflare Blog](https://blog.cloudflare.com/ja4-signals)
 * [FoxIO Blog](https://blog.foxio.io/ja4%2B-network-fingerprinting)
 * [FoxIO JA4 Database](https://ja4db.com/)
+* [JA4 HAProxy Lua Plugin](https://github.com/O-X-L/haproxy-ja4)
 
 About JA3:
-* [HAProxy Lua Plugin (JA3N)](https://github.com/O-X-L/haproxy-ja3n)
+* [JA3N HAProxy Lua Plugin](https://github.com/O-X-L/haproxy-ja3n)
 * [Salesforce Repository](https://github.com/salesforce/ja3)
 * [HAProxy Enterprise JA3 Fingerprint](https://customer-docs.haproxy.com/bot-management/client-fingerprinting/tls-fingerprint/)
-* [JA3N](https://tlsfingerprint.io/norm_fp)
+* [Why JA3 broke => JA3N](https://github.com/salesforce/ja3/issues/88)
+
 
 ----
 
 ## Usage
 
-* Add the LUA script `ja4h.lua` to your system. Available HTTP fetches are: [HAProxy HTTP fetches](https://github.com/haproxy/haproxy/blob/v3.1.0/src/http_fetch.c#L2256)
+* Add the LUA script `ja4h.lua` to your system.
 
 ## Config
 
-* Enable SSL/TLS capture with the global setting [tune.ssl.capture-buffer-size 96](https://www.haproxy.com/documentation/haproxy-configuration-manual/latest/#tune.ssl.capture-buffer-size)
 * Load the LUA module with `lua-load /etc/haproxy/lua/ja4h.lua`
 * Execute the LUA script on HTTP requests: `http-request lua.fingerprint_ja4h`
-* Log the fingerprint: `http-request capture var(txn.fingerprint_ja4h) len 36`
+* Log the fingerprint: `http-request capture var(txn.fingerprint_ja4h) len 51`
 
 ----
 
@@ -46,20 +48,45 @@ If you have:
 
 * Have not yet found an option to access the request object `req`.
 
+----
+
+## Contribute
+
+If you have:
+
+* Found an issue/bug - please [report it](https://github.com/O-X-L/haproxy-ja4h/issues/new)
+* Have an idea on how to improve it - [feel free to start a discussion](https://github.com/O-X-L/haproxy-ja4h/discussions/new/choose)
+* PRs are welcome
+
+Please [read the JA4H TLS details](https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/JA4H.md)!
+
+Available HTTP-fetches are: [HAProxy HTTP fetches](https://github.com/haproxy/haproxy/blob/v3.1.0/src/http_fetch.c#L2256)
+
 ### Testing
 
-* Create snakeoil certificate:
+Example:
+```
+FINGERPRINT
+xxx
 
-  ```bash
-  openssl req -x509 -newkey rsa:4096 -sha256 -nodes -subj "/CN=HAProxy JA4H Test" -addext "subjectAltName = DNS:localhost,IP:127.0.0.1" -keyout /tmp/haproxy.key.pem -out /tmp/haproxy.crt.pem -days 30
-  cat /tmp/haproxy.crt.pem /tmp/haproxy.key.pem > /tmp/haproxy.pem
-  ```
+DEBUG
+raw fingerprint: xxx 
+```
 
-* Link the LUA script: `ln -s $(pwd)/ja4h.lua /tmp/haproxy_ja4h.lua`
-* You can run the `haproxy_example.cfg` manually like this: `haproxy -W -f haproxy_example.cfg`
-* Access the test website: https://localhost:6969/
+#### Docker
 
+If you prefer to use Docker, the manual steps can be skipped.
+Run the docker container from the project root and access https://localhost:6969
 
 ```bash
-
+docker compose -f test/docker-compose.yaml up --build --watch
 ```
+
+`--watch` will automatically rebuild the container on changes
+
+#### Local
+
+* Run: `bash test/run.sh`
+* Access the test website: https://localhost:6969/
+
+Exit with `CTRL+C`
