@@ -71,10 +71,11 @@ end
 
 -- https://github.com/FoxIO-LLC/ja4/blob/main/python/ja4h.py#L12
 local function accept_lang_beg(txn)
-    local al = txn.f:req_fhdr('accept-language'):gsub('%W','')
+    local al = txn.f:req_fhdr('accept-language')
     if (not al) then
         return '0000'
     end
+    al = al:gsub('%W','')
     return string.sub(string.lower(al), 1, 4)
 end
 
@@ -82,6 +83,9 @@ end
 local function header_names_sorted(txn)
     local h = split_string(txn.f:req_hdr_names(), ',')
     table.sort(h)
+    if (not h) then
+        return ''
+    end
     return table.concat(h, ',')
 end
 
@@ -94,19 +98,29 @@ local function cookie_names_sorted(txn)
     end
     local cl = split_string(c, ',')
     table.sort(cl)
+    if (not cl) then
+        return ''
+    end
     return table.concat(cl, ',')
 end
 
 local function cookie_names_and_values_sorted(txn)
     local cl = {}
     local c = txn.f:req_cook_names()
-    if (not c) then
+    if (not c or c == '') then
         return ''
     end
-    for i,v in pairs(split_string(c, ',')) do
-        table.insert(cl, v .. '=' .. txn.f:req_cook(v))
+    for i,k in pairs(split_string(c, ',')) do
+        local v = txn.f:req_cook(k)
+        if (not v) then
+            v = ''
+        end
+        table.insert(cl, k .. '=' .. v)
     end
     table.sort(cl)
+    if (not cl) then
+        return ''
+    end
     return table.concat(cl, ',')
 end
 
