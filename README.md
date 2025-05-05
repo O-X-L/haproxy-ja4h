@@ -48,10 +48,6 @@ If you have:
 * Have an idea on how to improve it - [feel free to start a discussion](https://github.com/O-X-L/haproxy-ja4h/discussions/new/choose)
 * PRs are welcome
 
-### Issues
-
-* Have not yet found an option to access the request object `req`.
-
 ----
 
 ## Contribute
