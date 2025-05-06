@@ -57,10 +57,10 @@ Available HTTP-fetches are: [HAProxy HTTP fetches](https://github.com/haproxy/ha
 Example:
 ```
 FINGERPRINT
-ge20nc16enus_38f13b2c1334_1b82fc6e2b78_60837532b357
+ge20cn16enus_38f13b2c1334_1b82fc6e2b78_60837532b357
 
 DEBUG
-ge_20_n_c_16_enus_accept,accept-encoding,accept-language,cache-control,cookie,host,priority,sec-ch-ua,sec-ch-ua-mobile,sec-ch-ua-platform,sec-fetch-dest,sec-fetch-mode,sec-fetch-site,sec-fetch-user,upgrade-insecure-requests,user-agent_abc,def_abc=test,def=me
+ge_20_c_n_16_enus_accept,accept-encoding,accept-language,cache-control,cookie,host,priority,sec-ch-ua,sec-ch-ua-mobile,sec-ch-ua-platform,sec-fetch-dest,sec-fetch-mode,sec-fetch-site,sec-fetch-user,upgrade-insecure-requests,user-agent_abc,def_abc=test,def=me
 ```
 
 #### Docker
