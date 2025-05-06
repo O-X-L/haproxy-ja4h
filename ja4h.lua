@@ -71,7 +71,7 @@ end
 
 -- https://github.com/FoxIO-LLC/ja4/blob/main/python/ja4h.py#L12
 local function accept_lang_beg(txn)
-    local al = txn.f:req_hdr('accept-language')
+    local al = txn.f:req_fhdr('accept-language')
     if (not al) then
         return '0000'
     end
