@@ -48,16 +48,6 @@ If you have:
 * Have an idea on how to improve it - [feel free to start a discussion](https://github.com/O-X-L/haproxy-ja4h/discussions/new/choose)
 * PRs are welcome
 
-----
-
-## Contribute
-
-If you have:
-
-* Found an issue/bug - please [report it](https://github.com/O-X-L/haproxy-ja4h/issues/new)
-* Have an idea on how to improve it - [feel free to start a discussion](https://github.com/O-X-L/haproxy-ja4h/discussions/new/choose)
-* PRs are welcome
-
 Please [read the JA4H TLS details](https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/JA4H.md)!
 
 Available HTTP-fetches are: [HAProxy HTTP fetches](https://github.com/haproxy/haproxy/blob/v3.1.0/src/http_fetch.c#L2256)
@@ -70,7 +60,7 @@ FINGERPRINT
 ge20nc16enus_38f13b2c1334_1b82fc6e2b78_60837532b357
 
 DEBUG
-raw fingerprint: ge_20_n_c_16_enus_accept,accept-encoding,accept-language,cache-control,cookie,host,priority,sec-ch-ua,sec-ch-ua-mobile,sec-ch-ua-platform,sec-fetch-dest,sec-fetch-mode,sec-fetch-site,sec-fetch-user,upgrade-insecure-requests,user-agent_abc,def_abc=test,def=me
+ge_20_n_c_16_enus_accept,accept-encoding,accept-language,cache-control,cookie,host,priority,sec-ch-ua,sec-ch-ua-mobile,sec-ch-ua-platform,sec-fetch-dest,sec-fetch-mode,sec-fetch-site,sec-fetch-user,upgrade-insecure-requests,user-agent_abc,def_abc=test,def=me
 ```
 
 #### Docker

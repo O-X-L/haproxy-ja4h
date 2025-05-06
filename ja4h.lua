@@ -135,8 +135,8 @@ end
 function fingerprint_ja4h(txn)
     local p1 = method_code(txn)
     local p2 = http_version(txn)
-    local p3 = referer_is_set(txn)
-    local p4 = cookie_is_set(txn)
+    local p3 = cookie_is_set(txn)
+    local p4 = referer_is_set(txn)
     local p5 = header_count(txn)
     local p6 = accept_lang_beg(txn)
 
