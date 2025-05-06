@@ -93,7 +93,6 @@ local function header_names_sorted(txn)
 end
 
 -- https://github.com/FoxIO-LLC/ja4/blob/main/python/ja4h.py#L37
--- TODO: lstrip+rstrip cookies and cookie-values
 local function cookie_names_sorted(txn)
     local c = txn.f:req_cook_names()
     if (not c) then
