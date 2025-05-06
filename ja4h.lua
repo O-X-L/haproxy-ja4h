@@ -75,8 +75,11 @@ local function accept_lang_beg(txn)
     if (not al) then
         return '0000'
     end
-    al = al:gsub('%W','')
-    return string.sub(string.lower(al), 1, 4)
+    al = string.lower(al:gsub('%W',''))
+    if (#al < 4) then
+        return string.rep("0", 4 - #al) .. al
+    end
+    return string.sub(al, 1, 4)
 end
 
 -- https://github.com/FoxIO-LLC/ja4/blob/main/python/ja4h.py#L27
