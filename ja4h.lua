@@ -77,7 +77,7 @@ local function accept_lang_beg(txn)
     end
     al = string.lower(al:gsub('%W',''))
     if (#al < 4) then
-        return string.rep("0", 4 - #al) .. al
+        return string.rep('0', 4 - #al) .. al
     end
     return string.sub(al, 1, 4)
 end
