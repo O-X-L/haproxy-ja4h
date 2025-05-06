@@ -1,7 +1,5 @@
 # HAProxy - JA4H HTTP Client-Fingerprint - Lua Plugin
 
-**WARNING: This plugin is still in early development! DO NOT USE IN PRODUCTION!**
-
 You need to run HAProxy 2.9 or higher to use this plugin!
 
 If the needed features are not yet available in your version - it will fail with the error `attempt to call a nil value (method 'req_cook_names')`
