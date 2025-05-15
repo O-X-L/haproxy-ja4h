@@ -1,6 +1,7 @@
 -- Source: https://github.com/O-X-L/haproxy-ja4h
 -- Copyright (C) 2025 Rath Pascal
 -- License: MIT
+-- Algorithm License: FoxIO License (https://github.com/FoxIO-LLC/ja4/blob/main/LICENSE)
 
 -- JA4H
 -- see: https://github.com/FoxIO-LLC/ja4
