@@ -88,5 +88,13 @@ docker compose -f test/docker-compose.yaml up --build --watch
 
 * Run: `bash test/run.sh`
 * Access the test website: http://localhost:6969/
+* Or query the API: `curl -v https://localhost:6969/api`
+
+  ```json
+  {
+    "fingerprint": "ge11nn14enus_1e32c07f0ac0_000000000000_000000000000",
+    "details": "ge_11_n_n_14_enus_accept,accept-encoding,accept-language,cache-control,host,sec-ch-ua,sec-ch-ua-mobile,sec-ch-ua-platform,sec-fetch-dest,sec-fetch-mode,sec-fetch-site,sec-fetch-user,upgrade-insecure-requests,user-agent__"
+  }
+  ```
 
 Exit with `CTRL+C`
