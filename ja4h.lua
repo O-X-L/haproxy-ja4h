@@ -156,4 +156,4 @@ function fingerprint_ja4h(txn)
     txn:set_var('txn.fingerprint_ja4h', p1 .. p2 .. p3 .. p4 .. p5 .. p6 .. '_' .. p7 .. '_' .. p8 .. '_' .. p9)
 end
 
-core.register_action('fingerprint_ja4h', {'tcp-req', 'http-req'}, fingerprint_ja4h)
+core.register_action('fingerprint_ja4h', {'http-req'}, fingerprint_ja4h)
