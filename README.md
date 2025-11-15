@@ -1,5 +1,13 @@
 # HAProxy - JA4H HTTP Client-Fingerprint - Lua Plugin
 
+<p align="center">
+    <a title="Support this Project (Donate, Support-Licenses)" href="https://shop.oxl.app/collections/open-source">
+        <img src="https://files.oxl.at/img/badge-oss-support.svg" alt="Support Badge (Donate, Support-Licenses)"/>
+    </a>
+</p>
+
+----
+
 You need to run HAProxy 2.9 or higher to use this plugin!
 
 If the needed features are not yet available in your version - it will fail with the error `attempt to call a nil value (method 'req_cook_names')`
