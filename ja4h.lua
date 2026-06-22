@@ -34,6 +34,8 @@ local function http_version(txn)
         return '30'
     elseif (v == '2.0') then
         return '20'
+    elseif (v == '1.0') then
+        return '10'
     else
         return '11'
     end
