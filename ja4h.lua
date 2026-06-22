@@ -34,6 +34,8 @@ local function http_version(txn)
         return '30'
     elseif (v == '2.0') then
         return '20'
+    elseif (v == '1.0') then
+        return '10'
     else
         return '11'
     end
@@ -51,7 +53,13 @@ local function header_count(txn)
             c = c + 1
         end
     end
-    return c
+    if (c >= 99) then
+        return '99'
+    end
+    if (c < 10) then
+        return '0' .. c
+    end
+    return tostring(c)
 end
 
 local function referer_is_set(txn)
