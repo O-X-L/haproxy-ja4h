@@ -51,7 +51,13 @@ local function header_count(txn)
             c = c + 1
         end
     end
-    return c
+    if (c >= 99) then
+        return '99'
+    end
+    if (c < 10) then
+        return '0' .. c
+    end
+    return tostring(c)
 end
 
 local function referer_is_set(txn)
