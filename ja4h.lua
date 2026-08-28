@@ -25,7 +25,7 @@ local function split_string(str, delimiter)
 end
 
 function starts_with(value, start)
-    return type(value) == 'string' and type(start) == 'string' and string.sub(value, 1, 1) == start
+    return type(value) == 'string' and type(start) == 'string' and string.sub(value, 1, #start) == start
 end
 
 local function http_version(txn)
@@ -44,14 +44,17 @@ local function method_code(txn)
 end
 
 -- TODO: 'connection' header missing for some reason?
+-- JA4H part a: count request headers EXCLUDING cookie and referer, as a fixed-width
+-- 2-digit value clamped at 99 (matches reference JA4H, e.g. ge11cn21enus...).
 local function header_count(txn)
-    local c = 0;
-    for i,v in pairs(split_string(txn.f:req_hdr_names(), ',')) do
+    local c = 0
+    for _, h in ipairs(split_string(txn.f:req_hdr_names(), ',')) do
+        h = string.lower(h)
         if (not starts_with(h, 'cookie') and h ~= 'referer') then
             c = c + 1
         end
     end
-    return c
+    return string.format('%02d', math.min(c, 99))
 end
 
 local function referer_is_set(txn)
@@ -78,19 +81,24 @@ local function accept_lang_beg(txn)
     end
     al = string.lower(al:gsub('%W',''))
     if (#al < 4) then
-        return string.rep('0', 4 - #al) .. al
+        return al .. string.rep('0', 4 - #al)
     end
     return string.sub(al, 1, 4)
 end
 
--- https://github.com/FoxIO-LLC/ja4/blob/main/python/ja4h.py#L27
-local function header_names_sorted(txn)
-    local h = split_string(txn.f:req_hdr_names(), ',')
-    table.sort(h)
-    if (not h) then
-        return ''
+-- https://github.com/FoxIO-LLC/ja4/blob/main/python/ja4h.py
+-- JA4H part b: hash of the request header names with cookie and referer removed
+-- (same filter as header_count), in the order they appear in the request.
+-- The reference implementation does not sort these names; only parts c/d are sorted.
+local function header_names(txn)
+    local names = {}
+    for _, h in ipairs(split_string(txn.f:req_hdr_names(), ',')) do
+        h = string.lower(h)
+        if (not starts_with(h, 'cookie') and h ~= 'referer') then
+            table.insert(names, h)
+        end
     end
-    return table.concat(h, ',')
+    return table.concat(names, ',')
 end
 
 -- https://github.com/FoxIO-LLC/ja4/blob/main/python/ja4h.py#L37
@@ -143,7 +151,7 @@ function fingerprint_ja4h(txn)
     local p5 = header_count(txn)
     local p6 = accept_lang_beg(txn)
 
-    local p7_pretty = header_names_sorted(txn)
+    local p7_pretty = header_names(txn)
     local p7 = truncated_sha256(txn, p7_pretty)
 
     local p8_pretty = cookie_names_sorted(txn)
