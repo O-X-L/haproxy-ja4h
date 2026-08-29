@@ -48,7 +48,7 @@ RUN apk add --no-cache ca-certificates jemalloc && \
     rm -f /var/cache/apk/*
 
 FROM alpine:latest
-ENV HAPROXY_DOCKER_SRC_URL https://raw.githubusercontent.com/haproxytech/haproxy-docker-alpine/main/3.1/
+ENV HAPROXY_DOCKER_SRC_URL https://raw.githubusercontent.com/haproxytech/haproxy-docker-alpine/main/3.2
 RUN apk add --no-cache openssl zlib lua5.4-libs pcre2 jemalloc
 ADD --chmod=755 "${HAPROXY_DOCKER_SRC_URL}/docker-entrypoint.sh" '/docker-entrypoint.sh'
 ADD --chmod=644 "${HAPROXY_DOCKER_SRC_URL}/haproxy.cfg" '/usr/local/etc/haproxy/haproxy.cfg'
